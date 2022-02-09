@@ -11,9 +11,9 @@ void cmp(int a, int b, int c, int *large)
 {
   if(a>b && a>c)
   *large=a;
-  else if(b>a && b>c)
+  else if(b>c)
   *large=b;
-  else if(c>b && c>a)
+  else
   *large=c;
   printf("Largest number: %d\n",*large); //pass by reference
 }

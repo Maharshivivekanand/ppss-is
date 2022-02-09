@@ -1,1 +1,129 @@
+ 
+ gcc -g p9original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x8ab: file p9original.c, line 46.
+(gdb) r
+Starting program: /home/runner/ppss-is-2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p9original.c:46
+46  {
+(gdb) n
+49    input_two_strings(a,b);
+(gdb) s
+input_two_strings (a=0x7ffe93936d2a "", b=0x7ffe93936d39 "\006\240\353\313U")
+    at p9original.c:5
+5     printf("enter the two words\n");
+(gdb) n
+enter the two words
+6     scanf("%s",a);
+(gdb) n
+hello
+7     scanf("%s",b);
+(gdb) n
+world
+8   }
+(gdb) n
+main () at p9original.c:50
+50    k=str_cmp(a,b);
+(gdb) s
+str_cmp (a=0x7ffe93936d2a "hello", b=0x7ffe93936d39 "world") at p9original.c:12
+12    for(int k=0;k<n;k++)
+(gdb) n
+14      if(a[k]>b[k])
+(gdb) n
+19      if(a[k]==b[k])
+(gdb) n
+24        return 2;
+(gdb) n
+28  }
+(gdb) n
+main () at p9original.c:51
+51    output(a,b,k);
+(gdb) s
+output (a=0x7ffe93936d2a "hello", b=0x7ffe93936d39 "world", ans=2)
+    at p9original.c:31
+31    if(ans==1)
+ 
+ gcc -g p10final.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x875: file p10final.c, line 37.
+(gdb) r
+Starting program: /home/runner/ppss-is-2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p10final.c:37
+37  {
+(gdb) n
+39    input(&c1,&c2);
+(gdb) s
+input (pc1=0x7ffe8456ad90, pc2=0x7ffe8456ad98) at p10final.c:16
+16    printf("Enter a complex number\n");
+(gdb) n
+Enter a complex number
+17    scanf("%f %f",&pc1->real, &pc1->imaginary);
+(gdb) n
+2   3
+18    scanf("%f %f",&pc2->real, &pc2->imaginary);
+(gdb) n
+4   5
+20  }
+(gdb) n
+main () at p10final.c:40
+40    c3 = add_complex(c1,c2);
+(gdb) s
+add_complex (c1=..., c2=...) at p10final.c:25
+25    c3.real = c1.real + c2.real;
+(gdb) n
+26    c3.imaginary = c1.imaginary + c2.imaginary;
+(gdb) n
+27    return c3;
+(gdb) n
+28  }
+(gdb) n
+main () at p10final.c:41
+41    output(c1,c2,c3);
+(gdb) s
+output (c1=..., c2=..., c3=...) at p10final.c:32
+32    printf("(%f+i%f) + (%f+i%f) is (%f+i%f)\n",c1.real, c1.imaginary,c2.real,c2.imaginary,c3.real,c3.imaginary);
+(gdb) n
+(2.000000+i3.000000) + (4.000000+i5.000000) is (6.000000+i8.000000)
+33  }
+(gdb) n
+main () at p10final.c:42
+42    return 0;
+(gdb) c
+Continuing.
+[Inferi
