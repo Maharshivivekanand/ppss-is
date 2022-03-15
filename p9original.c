@@ -1,53 +1,34 @@
-#include<stdio.h> 
-#include<string.h>
-void input_two_strings(char*a,char*b)
+#include<stdio.h>
+
+void input_two_string(char *a,char *b)
+   { 
+     printf("enter the words\n");
+     scanf("%s %s",a,b);
+   }
+int strcmp(char *a, char *b)
 {
-  printf("enter the two words\n");
-  scanf("%s",a);
-  scanf("%s",b);
+  int c=0;
+  while((*a) && *a==*b)//'\0'->0-->
+  {
+    a++;//hello
+    b++; //hell
+  }
+  c=*a-*b;
+  return c;//c=111
 }
-int str_cmp(char a[],char b[])
+void output(char *a, char *b, int result)
 {
-  int n;
-  for(int k=0;k<n;k++)
-  {
-    if(a[k]>b[k])
-    {
-      return 1;
-    }
-    else
-    if(a[k]==b[k])
-    {
-      continue;
-    }
-    else{
-      return 2;
-    }
-  }
-  return 0;
-}
-void output(char a[],char b[],int ans)
-{
-  if(ans==1)
-{
-    printf("%s is greater than %s\n",a,b);
-  }
+  if(result>0)
+  printf("%s is greater than %s",a,b);
+  else if(result<0)
+  printf("%s is greater than %s",b,a);
   else
-  if(ans==2)
-  {
-    printf("%s is greater than %s\n",b,a);
-  }
-  else
-  {
-    printf("both the words are same\n");
-  }
+  printf("%s is same as %s",a,b);
 }
 int main()
 {
-  int k;
-  char a[15],b[15];
-  input_two_strings(a,b);
-  k=str_cmp(a,b);
-  output(a,b,k);
-  printf("%d",k);
-} 
+  char c[20],d[20];
+  input_two_string(c,d);
+  int l=strcmp(c,d);
+  output(c,d,l);
+}

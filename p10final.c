@@ -8,7 +8,7 @@ struct _complex
 
 typedef struct _complex Complex;
 struct _complex a;
-Complex a;
+Complex a; // No global variables
 
 
 void input(Complex *pc1, Complex *pc2)

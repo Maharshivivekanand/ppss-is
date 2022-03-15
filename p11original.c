@@ -7,8 +7,6 @@ struct _complex
 
 
 typedef struct _complex Complex;
-struct _complex a;
-Complex a;
 
 int input_n()
 {
